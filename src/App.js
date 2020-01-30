@@ -22,11 +22,25 @@ function App() {
 
 	return (
 		<ProuctContext.Provider value={{ products, addItem }}>
-			<CartContext.Provider value={cart}>
+			<CartContext.Provider value={ [cart] }>
 				<div className="App">
 					<Navigation cart={cart} />
+	
+					<Route exact path='/' component={Products} />
 
-					{/* Routes */}
+					<Route path='/cart' component={ShoppingCart} />
+
+				</div>
+			</CartContext.Provider>
+		</ProuctContext.Provider>
+	);
+}
+
+export default App;
+
+// Refactored Code
+
+{/* Routes */}
 					{/* <Route
 						exact
 						path="/"
@@ -36,9 +50,7 @@ function App() {
 								addItem={addItem}
 							/>
 						)}
-					/> */}
-
-					<Route exact path='/' component={Products} />
+					/> */}	
 
 					{/*
 					 <Route></Route>
@@ -46,13 +58,3 @@ function App() {
 						render={() => <ShoppingCart cart={cart} />}
 					/>
 					*/}
-
-					<Route path='/cart' component={cart} />
-
-				</div>
-			</CartContext.Provider>
-		</ProuctContext.Provider>
-	);
-}
-
-export default App;
